@@ -86,3 +86,47 @@ const eliminarItemProducto = (id) => {
         renderBotonCarrito();
     }
 }
+
+const buscarProducto = (id) => {
+    const juegos = cargarJuegosLS();
+
+    return juegos.find(item => item.id === id);
+}
+
+const verProducto = (id) => {
+    const producto = buscarProducto(id);
+    localStorage.setItem("producto", JSON.stringify(producto));
+    location.href = "ver_producto.html";
+}
+
+const cargarProducto = () => {
+    return JSON.parse(localStorage.getItem("producto"));
+}
+
+function confirmarCompra() {
+    Swal.fire({
+        title: 'Su Compra ha sido Exitosa!',
+        text: "Desea realizar otra Compra?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#FFD433',
+        confirmButtonText: 'Sí!',
+        cancelButtonText: 'No!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Genial!',
+            'Muchas Gracias por su Confianza!',
+            'success'
+        )}else {
+            Swal.fire(
+            'Genial!',
+            'Muchas Gracias por su Compra! ¡Hasta la Proxima!',
+            'success'
+        )}
+    })
+    vaciarCarrito();
+}
+
+document.getElementById("boton_comprar").addEventListener("click", confirmarCompra);

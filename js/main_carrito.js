@@ -28,7 +28,8 @@ const renderProductosCarrito = () => {
         salida += `<tr>
         <td colspan="4"><b>Suma Total:</b></td>
         <td><b>$${sumaCarrito()}</b></td>
-        <td>&nbsp;</td>
+        <td colspan="4" class="text-end"><a href="#" class="btn btn-warning fw-semibold" onClick="confirmarCompra()">Confirmar Compra <img src="imagenes/img videoJuegos/331-3319075_promociones-y-comunicacinde-nuevos-servicios-black-check-icon.png" 
+        alt="Confirmar Compra" width="20" /></a></td>
         </tr>
         </tbody>
         </table>`;
